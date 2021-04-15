@@ -2,11 +2,12 @@ import ToDoItem from "./ToDoItem";
 import CheckboxToDo from "./CheckboxToDo";
 import DeleteButton from "./DeleteButton";
 import {useSelector} from "react-redux";
-import {filters} from "../redusers/filter";
+import {filters} from "../../redusers/filter";
+import {useMemo} from "react";
 
 const ToDoList = ({content}) =>{
     const currentFilter = useSelector((state) => state.filter);
-    const getFilteredTasks = () => {
+    const filteredTasks = useMemo(() => {
         switch (currentFilter) {
             case(filters.SHOW_ALL):
                 return content;
@@ -15,16 +16,20 @@ const ToDoList = ({content}) =>{
             case(filters.SHOW_TODO):
                 return content.filter((item)=>(!item.isChecked))
         }
-    };
+    }, [content, currentFilter]);
 
     return (
          <ul style={{listStyleType:'none'}}>
-             {getFilteredTasks().map(function(todo){
+             {filteredTasks.map(function(todo){
                 return(
-                    <div className={'innerForToDo'} style={{display: 'flex'}} key={todo.key}>
+                    <div className={`${todo.isChecked? '.innerForToDo checked':'innerForToDo'}`} style={{display: 'flex'}} key={todo.key}>
+                        <div className={'inner'}>
                         <CheckboxToDo id={todo.key} isChecked={todo.isChecked}/>
                         <ToDoItem item={todo}/>
+                        </div>
+                        <div className={'inner'}>
                         <DeleteButton id={todo.key}/>
+                        </div>
                     </div>
             )
             })}

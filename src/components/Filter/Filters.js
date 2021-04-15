@@ -3,7 +3,7 @@ import CompletedFilter from "./CompletedFilter";
 import AllFilter from "./AllFilter";
 
 const Filters = ()=>{
-    return <div>
+    return <div className={'filtersDiv'}>
         <AllFilter/>
         <CompletedFilter/>
         <ToDoFilter link/>

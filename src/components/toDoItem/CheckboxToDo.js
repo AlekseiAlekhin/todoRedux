@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {checkedCheckbox} from "../redusers/actions";
+import {checkedCheckbox} from "../../redusers/actions";
 
 const CheckboxToDo = (props)=>{
     console.log(props);
