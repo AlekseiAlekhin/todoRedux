@@ -9,12 +9,13 @@ const ToDoList = ({content}) =>{
     const currentFilter = useSelector((state) => state.filter);
     const filteredTasks = useMemo(() => {
         switch (currentFilter) {
-            case(filters.SHOW_ALL):
-                return content;
+
             case(filters.SHOW_COMPLETED):
                 return content.filter((item)=>(item.isChecked))
             case(filters.SHOW_TODO):
                 return content.filter((item)=>(!item.isChecked))
+            default:
+                return content;
         }
     }, [content, currentFilter]);
 
@@ -22,13 +23,13 @@ const ToDoList = ({content}) =>{
          <ul style={{listStyleType:'none'}}>
              {filteredTasks.map(function(todo){
                 return(
-                    <div className={`${todo.isChecked? '.innerForToDo checked':'innerForToDo'}`} style={{display: 'flex'}} key={todo.key}>
+                    <div className={`${todo.isChecked? '.innerForToDo checked':'innerForToDo'}`} style={{display: 'flex'}} key={todo._id}>
                         <div className={'inner'}>
-                        <CheckboxToDo id={todo.key} isChecked={todo.isChecked}/>
+                        <CheckboxToDo id={todo._id} isChecked={todo.isChecked}/>
                         <ToDoItem item={todo}/>
                         </div>
                         <div className={'inner'}>
-                        <DeleteButton id={todo.key}/>
+                        <DeleteButton id={todo._id}/>
                         </div>
                     </div>
             )

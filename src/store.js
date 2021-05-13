@@ -1,18 +1,21 @@
-import {createStore} from "redux";
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import reduser from "./redusers/index";
-import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
+import {applyMiddleware, createStore} from "redux";
+import reducer from "./redusers/index";
+import thunk from "redux-thunk";
 
 
-const persistConfig = {
-    key: 'root',
-    storage,
-    stateReconciler: hardSet,
-}
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+//     stateReconciler: hardSet,
+// }
 
-const persistedReducer = persistReducer(persistConfig, reduser)
+// const persistedReducer = persistReducer(persistConfig, reducer)
 
-export const store = createStore(persistedReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-export let persistor = persistStore(store)
+// export const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(applyMiddleware(thunk)))
+// export const store = createStore(reducer,applyMiddleware(thunk))
 
+
+// export const persistor = persistStore(store)
+
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+export const store = createStoreWithMiddleware(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

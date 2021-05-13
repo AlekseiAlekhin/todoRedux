@@ -6,7 +6,7 @@ const Filters = ()=>{
     return <div className={'filtersDiv'}>
         <AllFilter/>
         <CompletedFilter/>
-        <ToDoFilter link/>
+        <ToDoFilter />
     </div>
 }
 

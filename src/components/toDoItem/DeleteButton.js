@@ -1,12 +1,12 @@
 import {useDispatch} from "react-redux";
-import {dltButton} from "../../redusers/actions";
 import {FaTrashAlt} from 'react-icons/fa'
+import {deleteFromDb} from "../../actions /actionsCreator";
 
-const DeleteButton = (id) => {
+const DeleteButton = ({id}) => {
     const dispatch = useDispatch();
     return <button className={'dltButton'}
                    type={"button"}
-                   onClick={() => dispatch(dltButton(id))}>
+                   onClick={() => dispatch(deleteFromDb(id))}>
      <FaTrashAlt/>
     </button>
 }

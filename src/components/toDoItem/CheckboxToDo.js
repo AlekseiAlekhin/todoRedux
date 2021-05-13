@@ -1,10 +1,9 @@
 import {useDispatch} from "react-redux";
-import {checkedCheckbox} from "../../redusers/actions";
+import {updateDB} from "../../actions /actionsCreator";
 
-const CheckboxToDo = (props)=>{
-    console.log(props);
+const CheckboxToDo = ({id, isChecked})=>{
     const dispatch = useDispatch();
-    return <input className={'checkbox'} checked={props.isChecked} type={'checkbox'} onChange={()=>dispatch(checkedCheckbox(props.id))}/>
+    return <input className={'checkbox'} checked={isChecked} type={'checkbox'} onChange={()=>dispatch(updateDB(id, isChecked))}/>
 }
 
 export default CheckboxToDo

@@ -1,9 +1,12 @@
 import {useDispatch} from "react-redux";
-import {addToDo} from '../../redusers/actions'
+import {addTodoSome} from "../../actions /actionsCreator";
 
-const AddNewItem = ()=>{
+
+
+const AddNewItem = () => {
     const dispatch = useDispatch();
-    return <input onKeyDown={(e)=>(e.keyCode === 13)&&dispatch(addToDo(e.target.value))} style={{width: '100%', textAlign:'center'}}/>
+    return <input className={'addSomeNewToDo'} onKeyDown={(e) => (e.keyCode === 13) && dispatch(addTodoSome(e.target.value))}
+                  style={{width: '100%', textAlign: 'center'}}/>
 }
 
 export default AddNewItem

@@ -4,10 +4,12 @@
   padding: 10px;
   align-items: center;
   border-bottom: 1px solid black;
+  justify-content: space-between;
+
 }
 
-input, textarea {outline:none;border: none;}
-input:active, textarea:active {outline:none;}
+.addSomeNewToDo, textarea {outline:none;border: none;}
+.addSomeNewToDo:active, textarea:active {outline:none;}
 :focus {outline:none;}
 textarea {resize:none;}
 textarea {resize:vertical;}

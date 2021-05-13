@@ -2,9 +2,9 @@ import {combineReducers} from "redux";
 import changingToDoList from "./changingToDoList";
 import filter from "./filter"
 
-const reduser = combineReducers({
+const reducer = combineReducers({
     changingToDoList,
     filter,
 })
 
-export default reduser;
+export default reducer;
