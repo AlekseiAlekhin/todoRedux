@@ -125,8 +125,8 @@ export const authorizationUserAction = (token) =>{
 }
 export const authorizationUser = (userNameAndPassword) => async (dispatch) =>{
     try{
-        const token = await userAutorisation(userNameAndPassword)
-        dispatch(authorizationUserAction(token))
+        const objectWithTokenAndUserName = await userAutorisation(userNameAndPassword)
+        dispatch(authorizationUserAction(objectWithTokenAndUserName))
     }catch (e){
         dispatch(failed(e))
     }

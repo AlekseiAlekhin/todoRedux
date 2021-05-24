@@ -37,6 +37,6 @@ export const createUserRegistration = async (text) =>{
 }
 
 export const userAutorisation = async (userNameAndPassword) =>{
-    const response = await todosApi.get('/getUser', {params: {userNameAndPassword}})
+    const response = await todosApi.get('/getUser', {params: userNameAndPassword})
     return response.data
 }
