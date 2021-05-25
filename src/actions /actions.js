@@ -8,6 +8,7 @@ export const GET_TODO_FROM_DB = 'GET_TODO_FROM_DB';
 export const CREATE_NEW_USER = 'CREATE_NEW_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 
+
 export const SUCCESS = 'SUCCESS';
 export const FAILED = 'FAILED';
 

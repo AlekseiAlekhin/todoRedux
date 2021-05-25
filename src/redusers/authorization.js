@@ -12,6 +12,10 @@ function authorization(state={isAuth:false}, action){
             return state = {
                 isAuth: true,
                 ...action.payload
+            };
+        case('LOGOUT'):
+            return state = {
+                isAuth: false,
             }
         default:
             return state;

@@ -19,7 +19,7 @@ import {
     deleteAllCheckedInDb,
     createUserRegistration,
     userAutorisation
-} from "../components/Services/Todo";
+} from "../components/Services/todoService";
 
 export const failed = (error) => {
     return {type: FAILED, error};
