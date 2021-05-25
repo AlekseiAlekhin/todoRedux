@@ -1,4 +1,4 @@
-import {LOGIN_USER} from "../actions /actions";
+import {CREATE_NEW_USER, LOGIN_USER} from "../actions /actions";
 
 
 function authorization(state={isAuth:false}, action){
@@ -8,6 +8,11 @@ function authorization(state={isAuth:false}, action){
                 isAuth: true,
                 ...action.payload
             };
+        case(CREATE_NEW_USER):
+            return state = {
+                isAuth: true,
+                ...action.payload
+            }
         default:
             return state;
     }

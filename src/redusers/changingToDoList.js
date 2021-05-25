@@ -22,11 +22,6 @@ function changingToDoList(state = [], action) {
             return state.filter((item)=>{
                 return !item.isChecked;
             })
-        case(CREATE_NEW_USER):
-            // if(action.payload.userName === '' && action.payload.password === ''){
-            //     return
-            // }
-            return action.payload;
         case(FAILED):
             console.error('failed',action.payload)
             return state;

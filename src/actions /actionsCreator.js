@@ -113,8 +113,8 @@ export const createUserAction = (text) => {
 }
 export const createNewUser = (text) => async (dispatch) => {
     try {
-        // const data = dispatch(createUserAction(text))
-        await createUserRegistration(text);
+       const userData = await createUserRegistration(text);
+       dispatch(createUserAction(userData))
     } catch (e) {
         dispatch(failed(e))
     }
