@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {filters} from "../../redusers/filter";
 import {useMemo} from "react";
 
+
 const ToDoList = ({content}) =>{
     const currentFilter = useSelector((state) => state.filter);
     const filteredTasks = useMemo(() => {

@@ -1,12 +1,12 @@
 import {todosApi} from "../../utils/API";
 
-export const getTodos = async () => {
-    const response = await todosApi.get('/')
+export const getTodos = async (userName) => {
+    const response = await todosApi.get('/', {params: userName})
     return response.data
 }
 
 export const createTodo = async (text)=>{
-    const response = await todosApi.post('/create', {text});
+    const response = await todosApi.post('/create', text);
     return response.data;
 }
 

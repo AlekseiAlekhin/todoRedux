@@ -33,10 +33,10 @@ export const success = () => {
 export const getAllFromDb = (payload) => {
     return {type: GET_ALL_FROM_DB, payload}
 }
-export const getTodo = () => async (dispatch) => {
+export const getTodo = (userName) => async (dispatch) => {
     try {
         // dispatch(pending)
-        const data = await getTodos()
+        const data = await getTodos(userName)
         console.log('received data', data)
         dispatch(getAllFromDb(data))
     } catch (e) {
@@ -51,9 +51,9 @@ export const createToDoAction = (data) => {
 export const addTodoSome = (text) => async (dispatch) => {
     try {
         const data = await createTodo(text);
-        dispatch(createToDoAction(data))
+        dispatch(createToDoAction(data));
     } catch (e) {
-        dispatch(failed(e))
+        dispatch(failed(e));
     }
 }
 
@@ -113,8 +113,8 @@ export const createUserAction = (text) => {
 }
 export const createNewUser = (text) => async (dispatch) => {
     try {
-        const data = dispatch(createUserAction(text))
-        await createUserRegistration(data);
+        // const data = dispatch(createUserAction(text))
+        await createUserRegistration(text);
     } catch (e) {
         dispatch(failed(e))
     }

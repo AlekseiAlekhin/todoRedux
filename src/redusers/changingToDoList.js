@@ -1,11 +1,12 @@
 import {ADD_TODO_TO_DB, FAILED, GET_ALL_FROM_DB, UPDATE_ALL_DB, DELETE_TODO_FROM_DB, UPDATE_TODO_IN_DB, DELETE_CHECKED_FROM_DB, CREATE_NEW_USER} from "../actions /actions";
 
 function changingToDoList(state = [], action) {
+
     switch (action.type) {
         case (GET_ALL_FROM_DB):
             return state.concat(action.payload);
         case (ADD_TODO_TO_DB):
-            return [...state, {_id: action.payload._id, text: action.payload.text, isChecked: action.payload.isChecked}];
+            return [...state, {_id: action.payload._id, text: action.payload.text, isChecked: action.payload.isChecked, userName: action.payload.userName}];
         case(UPDATE_TODO_IN_DB):
             // console.log(action)
             return state.map((item)=> (item._id === action.payload._id)? {...item, isChecked:action.payload.isChecked}: item)
@@ -22,10 +23,10 @@ function changingToDoList(state = [], action) {
                 return !item.isChecked;
             })
         case(CREATE_NEW_USER):
-            if(action.payload.userName === '' && action.payload.password === ''){
-                return
-            }
-            return action.payload
+            // if(action.payload.userName === '' && action.payload.password === ''){
+            //     return
+            // }
+            return action.payload;
         case(FAILED):
             console.error('failed',action.payload)
             return state;

@@ -5,7 +5,7 @@ import {useState, useRef} from "react"
 import {Link} from "react-router-dom"
 
 export const Registration = () => {
-    const [value, setValue] = useState({})
+    // const [value, setValue] = useState({})
     let dispatch = useDispatch();
     const name = useRef()
     const pass = useRef()
@@ -14,6 +14,6 @@ export const Registration = () => {
         <h1>REGISTRATION</h1>
         <input ref={name} name={'name'}/>
         <input ref={pass} name={'password'} />
-        <Link to={"/todolist"}><Button dark onClick={() => dispatch(createNewUser({userName:name.current.value, password:pass.current.value}))}>Done</Button></Link>
+        <Button dark onClick={() => dispatch(createNewUser({userName:name.current.value, password:pass.current.value}))}>Done</Button>
     </div>
 }

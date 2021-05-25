@@ -11,7 +11,7 @@ export const FormAuthorization = ()=>{
     return <div>
         <input ref={name} type={"input"} name={'name'} required/>
         <input ref={pass} type="input" name={'password'} required/>
-        <Link to={'/todolist'}><Button type={'submit'} dark onClick={()=>dispatch(authorizationUser({userName:name.current.value, password:pass.current.value}))}>Next</Button></Link>
+        <Button type={'submit'} dark onClick={()=>dispatch(authorizationUser({userName:name.current.value, password:pass.current.value}))}>Next</Button>
         <Link to={'/registration'}>Registration</Link>
     </div>
 }
