@@ -1,4 +1,4 @@
-import {CREATE_NEW_USER, LOGIN_USER} from "../actions /actions";
+import {LOGIN_USER, LOGOUT, VALID_USER} from "../actions /actions";
 
 
 function authorization(state={isAuth:false}, action){
@@ -8,14 +8,21 @@ function authorization(state={isAuth:false}, action){
                 isAuth: true,
                 ...action.payload
             };
-        case(CREATE_NEW_USER):
+        case(LOGOUT):
+            console.log('зашел')
+            return state = {
+                isAuth: false,
+            }
+        case (VALID_USER):
+            console.log(action.payload.length)
+            if(action.payload.length === 0){
+                return state = {
+                    isAuth: false,
+                }
+            }
             return state = {
                 isAuth: true,
                 ...action.payload
-            };
-        case('LOGOUT'):
-            return state = {
-                isAuth: false,
             }
         default:
             return state;

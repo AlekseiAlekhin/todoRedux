@@ -5,10 +5,9 @@ import {
     DELETE_CHECKED_FROM_DB,
     DELETE_TODO_FROM_DB,
     UPDATE_TODO_IN_DB,
-    GET_TODO_FROM_DB,
     CREATE_NEW_USER,
     FAILED,
-    SUCCESS, LOGIN_USER,
+    SUCCESS, LOGIN_USER, VALID_USER,
 } from './actions';
 import {
     createTodo,
@@ -18,7 +17,7 @@ import {
     updateAllTodo,
     deleteAllCheckedInDb,
     createUserRegistration,
-    userAutorisation
+    userAutorisation, CheckTokenAPI
 } from "../components/Services/todoService";
 
 export const failed = (error) => {
@@ -120,13 +119,28 @@ export const createNewUser = (text) => async (dispatch) => {
     }
 }
 
-export const authorizationUserAction = (token) =>{
-    return {type: LOGIN_USER, payload: token}
+export const authorizationUserAction = (tokenAndUserName) =>{
+    return {type: LOGIN_USER, payload: tokenAndUserName}
 }
 export const authorizationUser = (userNameAndPassword) => async (dispatch) =>{
     try{
-        const objectWithTokenAndUserName = await userAutorisation(userNameAndPassword)
-        dispatch(authorizationUserAction(objectWithTokenAndUserName))
+       const tokenAndUserName = await userAutorisation(userNameAndPassword);
+       dispatch(authorizationUserAction(tokenAndUserName));
+       console.log(tokenAndUserName)
+       localStorage.setItem('userData', JSON.stringify(tokenAndUserName));
+    }catch (e){
+        dispatch(failed(e))
+    }
+}
+
+export const isValidTokenAction = (userData) =>{
+    return {type: VALID_USER, payload: userData}
+}
+export const checkToken = (token) => async (dispatch)=>{
+    try{
+        const userData = await CheckTokenAPI(token);
+        dispatch(isValidTokenAction(userData))
+        console.log('some data',userData)
     }catch (e){
         dispatch(failed(e))
     }

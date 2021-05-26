@@ -41,7 +41,7 @@ export const userAutorisation = async (userNameAndPassword) =>{
     return response.data;
 }
 
-export const CheckToken = async (token)=>{
-    const response = await todosApi.get('/checkToken', {params: token})
+export const CheckTokenAPI = async (token)=>{
+    const response = await todosApi.get('/chekToken', {params: token})
     return response.data;
 }

@@ -8,11 +8,15 @@ import {
 } from "react-router-dom";
 import {Registration} from "./components/pageRegistration/Registration";
 import ToDo from "./components/toDoItem/ToDo";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {checkToken} from "./actions /actionsCreator";
 
 
 function App() {
-    const isAuth = useSelector(state => state.authorization.isAuth)
+    const isAuth = useSelector(state => state.authorization.isAuth);
+    const dispatch = useDispatch()
+    useEffect(()=>dispatch(checkToken(JSON.parse(localStorage.getItem('userData')))),[]);
     return (
         <Router>
             <Switch>
