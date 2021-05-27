@@ -4,7 +4,7 @@ import {createNewUser} from "../../actions /actionsCreator";
 import {useEffect, useRef} from "react"
 import {useHistory} from "react-router-dom";
 import {createUserRegistration} from "../Services/todoService";
-
+// todo обернуть в memo
 export const Registration = () => {
     // const [value, setValue] = useState({})
     let dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import {ADD_TODO_TO_DB, FAILED, GET_ALL_FROM_DB, UPDATE_ALL_DB, DELETE_TODO_FROM_DB, UPDATE_TODO_IN_DB, DELETE_CHECKED_FROM_DB, CREATE_NEW_USER} from "../actions /actions";
-
+// todo убрать консоль логи
 function changingToDoList(state = [], action) {
 
     switch (action.type) {

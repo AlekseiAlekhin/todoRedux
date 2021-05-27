@@ -38,5 +38,5 @@ const ToDoList = ({content}) =>{
          </ul>
     )
 }
-
+// todo обернуть в memo
 export default ToDoList

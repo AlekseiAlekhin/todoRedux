@@ -1,6 +1,6 @@
 import {LOGIN_USER, LOGOUT, VALID_USER} from "../actions /actions";
 
-
+// todo убрать консоль логи
 function authorization(state={isAuth:false}, action){
     switch (action.type) {
         case(LOGIN_USER):

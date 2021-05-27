@@ -10,5 +10,5 @@ const DeleteButton = ({id}) => {
      <FaTrashAlt/>
     </button>
 }
-
+// todo обернуть в memo
 export default DeleteButton

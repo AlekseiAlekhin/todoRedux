@@ -5,5 +5,5 @@ const ToDoFilter = ()=>{
     const dispatch = useDispatch();
     return <Button type={'button'} onClick={()=>dispatch({type:'SHOW_TODO'})} light>Show ToDo</Button>
 }
-
+// todo обернуть в memo
 export default ToDoFilter;

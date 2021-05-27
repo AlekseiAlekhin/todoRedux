@@ -12,5 +12,5 @@ const LogoutField = ({userName}) =>{
         <p>{userName}</p>
     </div>
 }
-
+// todo обернуть в memo
 export default LogoutField

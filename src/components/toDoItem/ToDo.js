@@ -29,5 +29,5 @@ const ToDo = ()=>{
             </BDiv>
    </div>
 }
-
+// todo обернуть в memo
 export default ToDo

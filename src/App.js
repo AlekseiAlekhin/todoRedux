@@ -13,6 +13,9 @@ import {useEffect} from "react";
 import {checkToken} from "./actions /actionsCreator";
 
 
+// todo FEATURE сделать блокировку интерфейса при запросах (дисейблить кнопки, инпуты и т.д.)
+// todo FEATURE добавить лоадер
+
 function App() {
     const isAuth = useSelector(state => state.authorization.isAuth);
     const dispatch = useDispatch()

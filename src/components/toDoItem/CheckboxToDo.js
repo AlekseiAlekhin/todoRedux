@@ -5,5 +5,5 @@ const CheckboxToDo = ({id, isChecked})=>{
     const dispatch = useDispatch();
     return <input className={'checkbox'} checked={isChecked} type={'checkbox'} onChange={()=>dispatch(updateDB(id, isChecked))}/>
 }
-
+// todo обернуть в memo
 export default CheckboxToDo

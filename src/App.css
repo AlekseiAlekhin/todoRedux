@@ -7,7 +7,7 @@
   justify-content: space-between;
 
 }
-
+/*todo Сделать все в kebab-style*/
 .addSomeNewToDo, textarea {outline:none;border: none;}
 .addSomeNewToDo:active, textarea:active {outline:none;}
 :focus {outline:none;}

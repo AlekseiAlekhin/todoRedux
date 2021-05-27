@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {authorizationUser} from "../../actions /actionsCreator";
 import {useRef} from "react";
 
+// todo обернуть в memo
 export const FormAuthorization = ()=>{
     let dispatch = useDispatch();
     let name = useRef();

@@ -5,5 +5,5 @@ const AllFilter = ()=>{
     const dispatch = useDispatch();
     return <Button type={'button'} onClick={()=>dispatch({type:'SHOW_ALL'})} light>All</Button>
 }
-
+// todo обернуть в memo
 export default AllFilter;

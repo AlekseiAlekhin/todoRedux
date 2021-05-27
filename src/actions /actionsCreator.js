@@ -28,7 +28,7 @@ export const success = () => {
     return {type: SUCCESS};
 }
 
-
+// todo убрать консоль логи
 export const getAllFromDb = (payload) => {
     return {type: GET_ALL_FROM_DB, payload}
 }
