@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {LOGOUT} from "../../actions /actions";
+import {memo} from "react";
 
 const LogoutField = ({userName}) =>{
     const dispatch = useDispatch()
@@ -12,5 +13,5 @@ const LogoutField = ({userName}) =>{
         <p>{userName}</p>
     </div>
 }
-// todo обернуть в memo
-export default LogoutField
+
+export default memo(LogoutField)

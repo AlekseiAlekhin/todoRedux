@@ -7,9 +7,9 @@
   justify-content: space-between;
 
 }
-/*todo Сделать все в kebab-style*/
-.addSomeNewToDo, textarea {outline:none;border: none;}
-.addSomeNewToDo:active, textarea:active {outline:none;}
+
+.add-some-new-todo, textarea {outline:none;border: none;}
+.add-some-new-todo:active, textarea:active {outline:none;}
 :focus {outline:none;}
 textarea {resize:none;}
 textarea {resize:vertical;}
@@ -30,17 +30,17 @@ ul{
   align-items: center;
 }
 
-.dltButton{
+.dlt-Button{
   outline: none;
   background-color: inherit;
   border: none;
 }
 
-.dltButton:hover{
+.dlt-Button:hover{
   border: 1px solid lightgrey;
 }
 
-.innerForToDo{
+.inner-For-ToDo{
   justify-content: space-between;
   display: flex;
   padding: 10px;
@@ -48,7 +48,7 @@ ul{
   border-bottom: 1px solid black;
 }
 
-.filtersDiv{
+.filters-Div{
   display: flex;
 }
 

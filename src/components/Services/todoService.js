@@ -16,14 +16,12 @@ export const updateTodo = async ({id, isChecked}) =>{
 }
 
 export const deleteTodos = async (id) =>{
-    console.log('success', id);
-    const response = await todosApi.delete(`/${id}/delete`) // todo изменить response на чтото более осознанное
+    await todosApi.delete(`/${id}/delete`)
     return id;
 }
 
 export const deleteAllCheckedInDb = async ()=>{
-    const response = await todosApi.delete('/deleteAllChecked'); // todo изменить response на чтото более осознанное
-    return response.data;
+    await todosApi.delete('/deleteAllChecked');
 }
 
 export const updateAllTodo = async (isChecked)=>{
@@ -32,16 +30,15 @@ export const updateAllTodo = async (isChecked)=>{
 }
 
 export const createUserRegistration = async (text) =>{
-    const response = await todosApi.post('/createUser', {...text}) // todo изменить response на чтото более осознанное
-    return response.data;
+    await todosApi.post('/createUser', {...text})
 }
 
 export const userAutorisation = async (userNameAndPassword) =>{
-    const response = await todosApi.get('/getUser', {params: userNameAndPassword}) // todo изменить response на чтото более осознанное
-    return response.data;
+    const userNameAndToken = await todosApi.get('/getUser', {params: userNameAndPassword})
+    return userNameAndToken.data;
 }
 
 export const CheckTokenAPI = async (token)=>{
-    const response = await todosApi.get('/chekToken', {params: token}) // todo изменить response на чтото более осознанное
-    return response.data;
+    const userNameAndToken = await todosApi.get('/chekToken', {params: token})
+    return userNameAndToken.data;
 }

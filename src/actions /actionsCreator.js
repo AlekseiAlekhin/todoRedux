@@ -28,7 +28,6 @@ export const success = () => {
     return {type: SUCCESS};
 }
 
-// todo убрать консоль логи
 export const getAllFromDb = (payload) => {
     return {type: GET_ALL_FROM_DB, payload}
 }
@@ -36,7 +35,6 @@ export const getTodo = (userName) => async (dispatch) => {
     try {
         // dispatch(pending)
         const data = await getTodos(userName)
-        console.log('received data', data)
         dispatch(getAllFromDb(data))
     } catch (e) {
         dispatch(failed(e))
@@ -62,7 +60,6 @@ export const update = (data) => {
 export const updateDB = (id, isChecked) => async (dispatch) => {
     try {
         const data = await updateTodo({id, isChecked: !isChecked});
-        console.log('data' ,data)
         dispatch(update(data))
 
     } catch (e) {
@@ -126,7 +123,6 @@ export const authorizationUser = (userNameAndPassword) => async (dispatch) =>{
     try{
        const tokenAndUserName = await userAutorisation(userNameAndPassword);
        dispatch(authorizationUserAction(tokenAndUserName));
-       console.log(tokenAndUserName)
        localStorage.setItem('userData', JSON.stringify(tokenAndUserName));
     }catch (e){
         dispatch(failed(e))
@@ -140,7 +136,6 @@ export const checkToken = (token) => async (dispatch)=>{
     try{
         const userData = await CheckTokenAPI(token);
         dispatch(isValidTokenAction(userData))
-        console.log('some data',userData)
     }catch (e){
         dispatch(failed(e))
     }

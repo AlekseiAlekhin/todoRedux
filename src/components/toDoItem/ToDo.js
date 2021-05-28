@@ -2,11 +2,11 @@ import LogoutField from "./LogoutField";
 import {BDiv} from "bootstrap-4-react/lib/components/dom";
 import AddNewItem from "./AddNewItem";
 import ToDoList from "./ToDoList";
-import Count from "../../Count";
+import Count from "./Count";
 import Filters from "../Filter/Filters";
 import ClearCheckedToDo from "./ClearCheckedToDo";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {memo, useEffect} from "react";
 import {getTodo} from "../../actions /actionsCreator";
 
 const ToDo = ()=>{
@@ -29,5 +29,5 @@ const ToDo = ()=>{
             </BDiv>
    </div>
 }
-// todo обернуть в memo
-export default ToDo
+
+export default memo(ToDo)

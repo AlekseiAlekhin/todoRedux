@@ -1,13 +1,10 @@
 import {Button} from 'bootstrap-4-react'
-import {useDispatch} from "react-redux";
-import {createNewUser} from "../../actions /actionsCreator";
-import {useEffect, useRef} from "react"
+import {memo, useRef} from "react"
 import {useHistory} from "react-router-dom";
 import {createUserRegistration} from "../Services/todoService";
-// todo обернуть в memo
-export const Registration = () => {
-    // const [value, setValue] = useState({})
-    let dispatch = useDispatch();
+
+
+export const Registration = memo(() => {
     const name = useRef()
     const pass = useRef()
     const history = useHistory()
@@ -22,4 +19,4 @@ export const Registration = () => {
         <input ref={pass} name={'password'} />
         <Button dark onClick={registrUser}>Done</Button>
     </div>
-}
+})
