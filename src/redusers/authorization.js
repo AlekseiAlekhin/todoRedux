@@ -1,4 +1,4 @@
-import {LOGIN_USER, LOGOUT, VALID_USER} from "../actions /actions";
+import {FAILED, LOGIN_USER, LOGOUT, VALID_USER} from "../actions /actions";
 
 function authorization(state={isAuth:false}, action){
     switch (action.type) {
@@ -21,6 +21,9 @@ function authorization(state={isAuth:false}, action){
                 isAuth: true,
                 ...action.payload
             }
+        case (FAILED):
+            console.log('error from auth' ,action.payload)
+            return state = {...state, status: action.payload}
         default:
             return state;
     }

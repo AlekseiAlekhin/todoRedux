@@ -5,27 +5,27 @@ export const getTodos = async (userName) => {
     return response.data
 }
 
-export const createTodo = async (text)=>{
-    const response = await todosApi.post('/create', text);
+export const createTodo = async (text, token)=>{
+    const response = await todosApi.post('/create', text, {params: token});
     return response.data;
 }
 
-export const updateTodo = async ({id, isChecked}) =>{
-    const response = await todosApi.put(`/${id}/update`, {isChecked});
+export const updateTodo = async ({id, isChecked}, token) =>{
+    const response = await todosApi.put(`/${id}/update`, {isChecked}, {params: token});
     return response.data;
 }
 
-export const deleteTodos = async (id) =>{
-    await todosApi.delete(`/${id}/delete`)
+export const deleteTodos = async (id, token) =>{
+    await todosApi.delete(`/${id}/delete`, {params: token})
     return id;
 }
 
-export const deleteAllCheckedInDb = async ()=>{
-    await todosApi.delete('/deleteAllChecked');
+export const deleteAllCheckedInDb = async (token)=>{
+    await todosApi.delete('/deleteAllChecked', {params: token});
 }
 
-export const updateAllTodo = async (isChecked)=>{
-    const response = await todosApi.put('/updateAll', {isChecked}) // todo изменить response на чтото более осознанное
+export const updateAllTodo = async (isChecked, token)=>{
+    const response = await todosApi.put('/updateAll', {isChecked}, {params: token}) // todo изменить response на чтото более осознанное
     return response.data;
 }
 

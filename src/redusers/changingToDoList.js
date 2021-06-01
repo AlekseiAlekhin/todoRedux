@@ -1,4 +1,4 @@
-import {ADD_TODO_TO_DB, FAILED, GET_ALL_FROM_DB, UPDATE_ALL_DB, DELETE_TODO_FROM_DB, UPDATE_TODO_IN_DB, DELETE_CHECKED_FROM_DB, CREATE_NEW_USER} from "../actions /actions";
+import {ADD_TODO_TO_DB, FAILED, GET_ALL_FROM_DB, UPDATE_ALL_DB, DELETE_TODO_FROM_DB, UPDATE_TODO_IN_DB, DELETE_CHECKED_FROM_DB} from "../actions /actions";
 
 function changingToDoList(state = [], action) {
 
@@ -12,16 +12,14 @@ function changingToDoList(state = [], action) {
         case(DELETE_TODO_FROM_DB):
            return state.filter((item) => item._id !== action.payload)
         case(UPDATE_ALL_DB):
-            return state.map((item)=>{
-                item.isChecked = true;
-                return item;
-            })
+            return state.map((item)=> ({...item, isChecked: true}))
         case(DELETE_CHECKED_FROM_DB):
             return state.filter((item)=>{
                 return !item.isChecked;
             })
-        case(FAILED):
-            return state;
+        // case(FAILED):
+        //     console.log('Changing')
+        //     return state;
         default:
             return state;
     }

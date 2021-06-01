@@ -19,9 +19,10 @@ import {
     createUserRegistration,
     userAutorisation, CheckTokenAPI
 } from "../components/Services/todoService";
+const userData = JSON.parse(localStorage.getItem('userData'))
 
 export const failed = (error) => {
-    return {type: FAILED, error};
+    return {type: FAILED, payload: error};
 }
 
 export const success = () => {
@@ -31,10 +32,9 @@ export const success = () => {
 export const getAllFromDb = (payload) => {
     return {type: GET_ALL_FROM_DB, payload}
 }
-export const getTodo = (userName) => async (dispatch) => {
+export const getTodo = () => async (dispatch) => {
     try {
-        // dispatch(pending)
-        const data = await getTodos(userName)
+        const data = await getTodos(userData)
         dispatch(getAllFromDb(data))
     } catch (e) {
         dispatch(failed(e))
@@ -47,7 +47,9 @@ export const createToDoAction = (data) => {
 }
 export const addTodoSome = (text) => async (dispatch) => {
     try {
-        const data = await createTodo(text);
+
+        const data = await createTodo(text, userData);
+        console.log(text)
         dispatch(createToDoAction(data));
     } catch (e) {
         dispatch(failed(e));
@@ -59,7 +61,7 @@ export const update = (data) => {
 }
 export const updateDB = (id, isChecked) => async (dispatch) => {
     try {
-        const data = await updateTodo({id, isChecked: !isChecked});
+        const data = await updateTodo({id, isChecked: !isChecked}, userData);
         dispatch(update(data))
 
     } catch (e) {
@@ -72,7 +74,7 @@ export const Delete = (id) => {
 }
 export const deleteFromDb = (id) => async (dispatch)=>{
     try{
-        const data = await deleteTodos(id);
+        const data = await deleteTodos(id, userData);
         dispatch(Delete(data))
     }catch (e){
         dispatch(failed(e))
@@ -84,7 +86,7 @@ export const deleteAllChecked = ()=>{
 }
 export const deleteAllCheckedFromDb = () => async (dispatch)=>{
     try{
-        await deleteAllCheckedInDb()
+        await deleteAllCheckedInDb(userData)
         dispatch(deleteAllChecked())
     }catch (e){
         dispatch(failed(e))
@@ -97,8 +99,8 @@ export const updateAll = (isChecked)=>{
 
 export const updateAllDb = (isChecked) => async (dispatch)=>{
     try{
-        const data = await updateAllTodo(isChecked);
-        dispatch(updateAll(data));
+        const data = await updateAllTodo(isChecked, userData);
+        dispatch(updateAll());
     }catch (e){
        dispatch(failed(e))
     }
@@ -125,6 +127,7 @@ export const authorizationUser = (userNameAndPassword) => async (dispatch) =>{
        dispatch(authorizationUserAction(tokenAndUserName));
        localStorage.setItem('userData', JSON.stringify(tokenAndUserName));
     }catch (e){
+        console.log(e)
         dispatch(failed(e))
     }
 }
@@ -132,9 +135,9 @@ export const authorizationUser = (userNameAndPassword) => async (dispatch) =>{
 export const isValidTokenAction = (userData) =>{
     return {type: VALID_USER, payload: userData}
 }
-export const checkToken = (token) => async (dispatch)=>{
+export const checkToken = (tokens) => async (dispatch)=>{
     try{
-        const userData = await CheckTokenAPI(token);
+        const userData = await CheckTokenAPI(tokens);
         dispatch(isValidTokenAction(userData))
     }catch (e){
         dispatch(failed(e))

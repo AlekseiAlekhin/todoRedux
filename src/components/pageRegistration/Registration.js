@@ -27,9 +27,9 @@ export const Registration = memo(() => {
             </Collapse>
         </Navbar>
         <BDiv mx="auto" shadow="lg" mb="5" bg="light" rounded style={{maxWidth: '400px',padding: '15px 20px', boxSizing: 'border-box'}}>
-            <h2>REGISTRATION</h2>
+            <h2>Registration</h2>
             <BDiv style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><p>Login</p><input ref={name} name={'name'} style={{marginBottom:'5px'}}/></BDiv>
-            <BDiv style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><p>Password</p><input ref={pass} name={'password'} style={{marginBottom:'5px'}}/></BDiv>
+            <BDiv style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}><p>Password</p><input ref={pass} type="password" name={'password'} style={{marginBottom:'5px'}}/></BDiv>
             <Button dark onClick={registrUser}>Done</Button>
         </BDiv>
     </div>
